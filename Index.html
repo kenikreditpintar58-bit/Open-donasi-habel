@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bantu Pengobatan Habel Putra Nelson Lauw | Peduli Sesama</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-teal-500 selection:text-white">
+
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-9 h-9 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+                    H
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm sm:text-base leading-tight text-slate-900">Peduli Habel Putra</h1>
+                    <p class="text-xs text-slate-500">Galang Dana Resmi</p>
+                </div>
+            </div>
+            <button onclick="openShareModal()" class="flex items-center space-x-1.5 px-3 py-1.5 bg-teal-50 text-teal-700 text-xs sm:text-sm font-semibold rounded-full hover:bg-teal-100 transition">
+                <i class="fa-solid fa-share-nodes"></i>
+                <span>Bagikan</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Left Column: Story & Donors -->
+        <div class="md:col-span-2 space-y-6">
+
+            <!-- Hero Banner & Campaign Info Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="relative h-56 sm:h-72 bg-slate-200">
+                    <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1000&q=80" alt="Ilustrasi Medis" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-4">
+                        <span class="bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Bantuan Medis & Kecelakaan</span>
+                    </div>
+                </div>
+
+                <div class="p-5 sm:p-6 space-y-4">
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+                        Bantu Pengobatan Habel Putra Nelson Lauw Terlibat Kecelakaan
+                    </h2>
+                    
+                    <div class="flex items-center space-x-3 pt-1">
+                        <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500">Penggalang Dana</p>
+                            <p class="text-sm font-semibold text-slate-800">Keluarga & Sahabat Dekat Habel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6 space-y-5">
+                <div>
+                    <div class="flex justify-between items-baseline mb-1">
+                        <span class="text-2xl sm:text-3xl font-extrabold text-teal-700" id="currentAmountDisplay">Rp 4.500.000</span>
+                        <span class="text-xs sm:text-sm text-slate-500 font-medium">dari target <span id="targetAmountDisplay" class="font-bold text-slate-700">Rp 30.000.000</span></span>
+                    </div>
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                        <div id="progressBar" class="bg-gradient-to-r from-teal-500 to-emerald-500 h-3 rounded-full transition-all duration-500" style="width: 15%;"></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 py-3 border-y border-slate-100 text-center">
+                    <div>
+                        <p class="text-xs text-slate-500">Terkumpul</p>
+                        <p class="font-bold text-slate-800 text-sm sm:text-base" id="statCollected">15%</p>
+                    </div>
+                    <div class="border-x border-slate-100">
+                        <p class="text-xs text-slate-500">Donatur</p>
+                        <p class="font-bold text-slate-800 text-sm sm:text-base" id="statDonorsCount">12 Orang</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500">Sisa Hari</p>
+                        <p class="font-bold text-slate-800 text-sm sm:text-base">24 Hari</p>
+                    </div>
+                </div>
+
+                <!-- Sticky Mobile CTA inside card -->
+                <button onclick="openDonationModal()" class="w-full py-3.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold rounded-xl shadow-lg shadow-teal-600/20 transition transform active:scale-95 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-hand-holding-dollar text-lg"></i>
+                    <span class="text-base">Donasi Sekarang</span>
+                </button>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6 space-y-4">
+                <h3 class="font-bold text-lg text-slate-900 border-b border-slate-100 pb-2">Kisah Penggalangan Dana</h3>
+                <div class="prose prose-slate text-sm sm:text-base text-slate-600 space-y-3 leading-relaxed">
+                    <p>
+                        Halo orang baik, teman-teman, dan kerabat sekalian. 
+                    </p>
+                    <p>
+                        Kabar duka dan musibah datang menimpa kawan kita tercinta, <strong>Habel Putra Nelson Lauw</strong>. Beliau baru saja mengalami kecelakaan lalu lintas yang mengakibatkan luka-luka serius dan memerlukan penanganan medis segera serta serangkaian tindakan operasi lanjutan di rumah sakit.
+                    </p>
+                    <p>
+                        Biaya rumah sakit dan obat-obatan yang tidak sedikit membuat keluarga saat ini berada dalam situasi yang cukup berat. Oleh karena itu, melalui halaman galang dana ini, kami mengetuk hati para dermawan untuk turut berpartisipasi memberikan uluran tangan demi kesembuhan Habel.
+                    </p>
+                    <p>
+                        Bantuan sekecil apapun, baik doa maupun donasi materiil, akan sangat berarti bagi perjuangan Habel dan keluarganya saat ini. Terima kasih banyak atas kebaikan hati rekan-rekan sekalian. Tuhan memberkati.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6 space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-lg text-slate-900">Donatur & Doa (<span id="totalDonorsBadge">0</span>)</h3>
+                    <span class="text-xs text-slate-400">Diperbarui secara real-time</span>
+                </div>
+
+                <div id="donorsListContainer" class="space-y-3 max-h-96 overflow-y-auto pr-1">
+                    <!-- Dynamic donors list injected via JS -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right Column: Sidebar / Desktop Sticky Action Card -->
+        <div class="space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-4 sticky top-20 hidden md:block">
+                <h3 class="font-bold text-slate-900 text-base">Ulurkan Tangan untuk Habel</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Mari bantu ringankan beban biaya medis Habel Putra Nelson Lauw agar bisa segera pulih kembali.
+                </p>
+                <button onclick="openDonationModal()" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Donasi Sekarang</span>
+                </button>
+                <div class="text-center pt-2">
+                    <a href="#donorsListContainer" class="text-xs text-teal-600 hover:underline font-medium">Lihat daftar donatur terbaru</a>
+                </div>
+            </div>
+
+            <!-- Emergency / Info Box -->
+            <div class="bg-teal-50 border border-teal-100 rounded-2xl p-5 space-y-3">
+                <div class="flex items-center space-x-2 text-teal-800 font-semibold text-sm">
+                    <i class="fa-solid fa-circle-info text-teal-600"></i>
+                    <span>Informasi Penyaluran</span>
+                </div>
+                <p class="text-xs text-teal-700 leading-relaxed">
+                    Seluruh dana yang terkumpul akan disalurkan secara transparan langsung untuk biaya pengobatan rumah sakit Habel Putra Nelson Lauw.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="donationModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-5 shadow-2xl relative animate-in fade-in zoom-in duration-200 my-8">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 class="font-bold text-lg text-slate-900">Formulir Donasi</h3>
+                <button onclick="closeDonationModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form id="donationForm" onsubmit="handleDonationSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Nominal Donasi (Rp)</label>
+                    <input type="number" id="donAmount" required min="10000" placeholder="Contoh: 50000" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium">
+                    
+                    <!-- Quick Amount Buttons -->
+                    <div class="grid grid-cols-3 gap-2 mt-2">
+                        <button type="button" onclick="setAmount(20000)" class="py-1.5 px-2 bg-slate-100 hover:bg-teal-50 hover:border-teal-500 hover:text-teal-700 text-slate-700 text-xs font-semibold rounded-lg border border-slate-200 transition">Rp 20.000</button>
+                        <button type="button" onclick="setAmount(50000)" class="py-1.5 px-2 bg-slate-100 hover:bg-teal-50 hover:border-teal-500 hover:text-teal-700 text-slate-700 text-xs font-semibold rounded-lg border border-slate-200 transition">Rp 50.000</button>
+                        <button type="button" onclick="setAmount(100000)" class="py-1.5 px-2 bg-slate-100 hover:bg-teal-50 hover:border-teal-500 hover:text-teal-700 text-slate-700 text-xs font-semibold rounded-lg border border-slate-200 transition">Rp 100.000</button>
+                        <button type="button" onclick="setAmount(250000)" class="py-1.5 px-2 bg-slate-100 hover:bg-teal-50 hover:border-teal-500 hover:text-teal-700 text-slate-700 text-xs font-semibold rounded-lg border border-slate-200 transition">Rp 250.000</button>
+                        <button type="button" onclick="setAmount(500000)" class="py-1.5 px-2 bg-slate-100 hover:bg-teal-50 hover:border-teal-500 hover:text-teal-700 text-slate-700 text-xs font-semibold rounded-lg border border-slate-200 transition">Rp 500.000</button>
+                        <button type="button" onclick="setAmount(1000000)" class="py-1.5 px-2 bg-slate-100 hover:bg-teal-50 hover:border-teal-500 hover:text-teal-700 text-slate-700 text-xs font-semibold rounded-lg border border-slate-200 transition">Rp 1.000.000</button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Donatur</label>
+                    <input type="text" id="donName" required placeholder="Masukkan nama lengkap atau Hamba Allah" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm">
+                    <div class="mt-1 flex items-center space-x-2">
+                        <input type="checkbox" id="isAnonymous" onchange="toggleAnonymous(this)" class="rounded text-teal-600 focus:ring-teal-500">
+                        <label for="isAnonymous" class="text-xs text-slate-500 cursor-pointer">Sembunyikan nama saya (Donatur Anonim)</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Metode Pembayaran</label>
+                    <select id="donPayment" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm bg-white">
+                        <option value="BCA Virtual Account">BCA Virtual Account</option>
+                        <option value="Mandiri Virtual Account">Mandiri Virtual Account</option>
+                        <option value="BRI Virtual Account">BRI Virtual Account</option>
+                        <option value="QRIS (GoPay, OVO, Dana, ShopeePay)">QRIS (Semua E-Wallet / Mobile Banking)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Pesan / Doa Dukungan (Opsional)</label>
+                    <textarea id="donMessage" rows="2" placeholder="Tuliskan doa atau semangat untuk kesembuhan Habel..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-md transition text-sm">
+                    Lanjutkan Pembayaran <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="paymentModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl relative text-center my-8">
+            <div class="w-12 h-12 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+                <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <h3 class="font-bold text-lg text-slate-900">Selesaikan Pembayaran Anda</h3>
+            <p class="text-xs text-slate-500">Silakan transfer donasi sesuai nominal unik di bawah ini:</p>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2 text-left">
+                <div class="flex justify-between text-xs text-slate-500">
+                    <span>Metode:</span>
+                    <span id="payMethodLabel" class="font-semibold text-slate-800">BCA VA</span>
+                </div>
+                <div class="flex justify-between text-xs text-slate-500">
+                    <span>Total Donasi:</span>
+                    <span id="payAmountLabel" class="font-bold text-teal-700 text-sm">Rp 0</span>
+                </div>
+                <div class="flex justify-between items-center pt-2 border-t border-slate-200">
+                    <div>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Nomor Tujuan / VA</p>
+                        <p id="payNumberLabel" class="font-mono font-bold text-base text-slate-800">8801289381293</p>
+                    </div>
+                    <button onclick="copyPayNumber()" class="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 text-xs font-semibold rounded-lg transition">
+                        <i class="fa-regular fa-copy"></i> Salin
+                    </button>
+                </div>
+            </div>
+
+            <p class="text-[11px] text-amber-600 bg-amber-50 p-2.5 rounded-lg border border-amber-200 text-left">
+                <i class="fa-solid fa-triangle-exclamation mr-1"></i> Setelah transfer berhasil, sistem akan otomatis mencatat donasi Anda dan menampilkan doa Anda di halaman utama.
+            </p>
+
+            <button onclick="finishDonationProcess()" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-md transition text-sm">
+                Saya Sudah Transfer & Konfirmasi
+            </button>
+        </div>
+    </div>
+
+    <div id="shareModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 space-y-4 shadow-2xl relative text-center">
+            <h3 class="font-bold text-base text-slate-900">Bagikan Galang Dana</h3>
+            <p class="text-xs text-slate-500">Bantu sebarkan tautan ini ke grup WhatsApp atau media sosial untuk mendukung Habel.</p>
+            
+            <div class="grid grid-cols-2 gap-3 pt-2">
+                <button onclick="shareWhatsApp()" class="py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl flex items-center justify-center space-x-2 transition">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>WhatsApp</span>
+                </button>
+                <button onclick="copyLink()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-900 text-white font-semibold text-xs rounded-xl flex items-center justify-center space-x-2 transition">
+                    <i class="fa-solid fa-link"></i>
+                    <span>Salin Link</span>
+                </button>
+            </div>
+            <button onclick="closeShareModal()" class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold rounded-xl transition mt-2">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Default Mock Donors Data if localStorage is empty
+        const defaultDonors = [
+            { name: "Budi Santoso", amount: 250000, time: "2 jam lalu", message: "Semoga lekas sembuh kawan Habel, tetap semangat!" },
+            { name: "Siti Aminah", amount: 100000, time: "5 jam lalu", message: "Doa terbaik untuk kesembuhan Habel. Lekas pulih ya." },
+            { name: "Hamba Allah", amount: 500000, time: "1 hari lalu", message: "Semoga lekas diberi kesembuhan dan diangkat sakitnya." },
+            { name: "Rian Pratama", amount: 150000, time: "1 hari lalu", message: "Cepat sembuh bro Habel, kita tunggu kehadirannya lagi." }
+        ];
+
+        let donors = JSON.parse(localStorage.getItem('habel_donors')) || defaultDonors;
+        let targetAmount = 30000000; // Target 30 Juta Rupiah
+        let tempDonationData = null;
+
+        // Initialize App on load
+        window.onload = function() {
+            updateDashboard();
+        };
+
+        function setAmount(val) {
+            document.getElementById('donAmount').value = val;
+        }
+
+        function toggleAnonymous(checkbox) {
+            const nameInput = document.getElementById('donName');
+            if(checkbox.checked) {
+                nameInput.value = "Hamba Allah";
+                nameInput.disabled = true;
+            } else {
+                nameInput.value = "";
+                nameInput.disabled = false;
+            }
+        }
+
+        function openDonationModal() {
+            document.getElementById('donationModal').classList.remove('hidden');
+        }
+
+        function closeDonationModal() {
+            document.getElementById('donationModal').classList.add('hidden');
+        }
+
+        function openShareModal() {
+            document.getElementById('shareModal').classList.remove('hidden');
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.add('hidden');
+        }
+
+        function handleDonationSubmit(e) {
+            e.preventDefault();
+            const amount = parseInt(document.getElementById('donAmount').value);
+            const name = document.getElementById('donName').value;
+            const payment = document.getElementById('donPayment').value;
+            const message = document.getElementById('donMessage').value || "Semoga lekas diberi kesembuhan.";
+
+            tempDonationData = { name, amount, payment, message, time: "Baru saja" };
+
+            // Set payment modal labels
+            document.getElementById('payMethodLabel').innerText = payment;
+            document.getElementById('payAmountLabel').innerText = formatIDR(amount);
+            let randomCode = Math.floor(1000000000 + Math.random() * 9000000000);
+            document.getElementById('payNumberLabel').innerText = "VA-" + randomCode;
+
+            closeDonationModal();
+            document.getElementById('paymentModal').classList.remove('hidden');
+        }
+
+        function finishDonationProcess() {
+            if (tempDonationData) {
+                donors.unshift(tempDonationData);
+                localStorage.setItem('habel_donors', JSON.stringify(donors));
+                updateDashboard();
+                tempDonationData = null;
+            }
+            document.getElementById('paymentModal').classList.add('hidden');
+            
+            // Show custom toast notification
+            alertBox("Terima kasih! Donasi Anda telah tercatat dan doa Anda sangat berarti bagi kesembuhan Habel.");
+            document.getElementById('donationForm').reset();
+            document.getElementById('donName').disabled = false;
+        }
+
+        function updateDashboard() {
+            // Calculate total collected
+            let totalCollected = donors.reduce((acc, curr) => acc + parseInt(curr.amount), 0);
+            // Include baseline mock amount if default
+            let displayTotal = totalCollected < 4500000 ? 4500000 + totalCollected : totalCollected;
+            
+            document.getElementById('currentAmountDisplay').innerText = formatIDR(displayTotal);
+            document.getElementById('targetAmountDisplay').innerText = formatIDR(targetAmount);
+
+            let percentage = Math.min(Math.round((displayTotal / targetAmount) * 100), 100);
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('statCollected').innerText = percentage + '%';
+            
+            let totalDonorsCount = donors.length + 12; // Base offset
+            document.getElementById('statDonorsCount').innerText = totalDonorsCount + ' Orang';
+            document.getElementById('totalDonorsBadge').innerText = totalDonorsCount;
+
+            // Render Donors List
+            let container = document.getElementById('donorsListContainer');
+            container.innerHTML = "";
+
+            // Render default list items + user submitted ones
+            let allDonorsView = [...donors];
+            
+            allDonorsView.forEach(d => {
+                let div = document.createElement('div');
+                div.className = "p-3.5 bg-slate-50 rounded-xl border border-slate-100 space-y-1";
+                div.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <span class="font-semibold text-xs sm:text-sm text-slate-800">${escapeHtml(d.name)}</span>
+                        <span class="font-bold text-xs sm:text-sm text-teal-700">${formatIDR(d.amount)}</span>
+                    </div>
+                    <p class="text-xs text-slate-600 italic">"${escapeHtml(d.message)}"</p>
+                    <p class="text-[10px] text-slate-400 text-right">${d.time}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function formatIDR(num) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(num);
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        function copyPayNumber() {
+            let numText = document.getElementById('payNumberLabel').innerText;
+            if(navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(numText);
+            } else {
+                let aux = document.createElement("input");
+                aux.setAttribute("value", numText);
+                document.body.appendChild(aux);
+                aux.select();
+                document.execCommand("copy");
+                document.body.removeChild(aux);
+            }
+            alertBox("Nomor pembayaran berhasil disalin!");
+        }
+
+        function copyLink() {
+            let dummyUrl = window.location.href;
+            if(navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(dummyUrl);
+            } else {
+                let aux = document.createElement("input");
+                aux.setAttribute("value", dummyUrl);
+                document.body.appendChild(aux);
+                aux.select();
+                document.execCommand("copy");
+                document.body.removeChild(aux);
+            }
+            alertBox("Link halaman galang dana berhasil disalin!");
+            closeShareModal();
+        }
+
+        function shareWhatsApp() {
+            let text = encodeURIComponent("Mari bantu kawan kita Habel Putra Nelson Lauw yang sedang mengalami musibah kecelakaan dan membutuhkan biaya pengobatan: " + window.location.href);
+            window.open("https://api.whatsapp.com/send?text=" + text, "_blank");
+            closeShareModal();
+        }
+
+        function alertBox(msg) {
+            // Modern subtle popup alert replacement
+            let alertDiv = document.createElement('div');
+            alertDiv.className = "fixed bottom-5 right-5 z-50 bg-slate-900 text-white text-xs sm:text-sm px-4 py-3 rounded-xl shadow-xl flex items-center space-x-2 animate-in fade-in slide-in-from-bottom-5 duration-300";
+            alertDiv.innerHTML = `<i class="fa-solid fa-circle-check text-teal-400 text-base"></i><span>${msg}</span>`;
+            document.body.appendChild(alertDiv);
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
